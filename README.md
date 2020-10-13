@@ -24,7 +24,7 @@ Example wireframes to follow are found [here](https://backend.turing.io/module3/
 
 ### Schema
 
-  ![Schema](https://github.com/lkriffell/viewing_party/blob/main/app/assets/images/schema.png)
+  ![Schema](/app/assets/images/schema.png)
   - This project made heavy use of poros to shrink the database and keep code more organized
 
 ## Summary
