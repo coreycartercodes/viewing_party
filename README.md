@@ -14,13 +14,18 @@ are also users of the application.
 ### Authors
   - **Logan Riffell** - [GitHub](https://github.com/coreycartercodes)
   - **Corey Carter** - [GitHub](https://github.com/lkriffell)
-  
+
 ### Versions
 
 - Ruby 2.5.3
 - Rails 5.2.4.3
 
 Example wireframes to follow are found [here](https://backend.turing.io/module3/projects/viewing_party/wireframes)
+
+### Schema
+
+  ![Schema](https://github.com/lkriffell/viewing_party/blob/main/app/assets/images/schema.png)
+  - This project made heavy use of poros to shrink the database and keep code more organized
 
 ## Summary
 
@@ -96,6 +101,6 @@ To create a viewing party:
   - [The Movie Database API](https://developers.themoviedb.org/3)
   - We used Ruby version [2.5.3](https://ruby-doc.org/core-2.5.3/)
   - Ruby on Rails version [5.2.4.3](https://rubygems.org/gems/rails/versions/5.2.4.3)
-  
+
 ## Acknowledgments
   - Thank you to [The Movie Database API](https://developers.themoviedb.org/3) for allowing us to use their data collections
