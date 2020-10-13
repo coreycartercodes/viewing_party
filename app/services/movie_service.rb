@@ -3,19 +3,6 @@ class MovieService
     Faraday.new(url: 'https://api.themoviedb.org')
   end
 
-  # def all_movies
-  #   page_num = 1
-  #   movie_collection = []
-  #   500.times do
-  #     connection = conn.get("/3/discover/movie?api_key=#{ENV['MOVIE_API_KEY']}&language=en-US&page=#{page_num}")
-  #     movie_collection = JSON.parse(connection.body, symbolize_names: true)
-  #     movie_collection[:results].each do |movie|
-  #       new_movie = Movie.create(title: movie[:title], api_id: movie[:id])
-  #     end
-  #     page_num += 1
-  #   end
-  # end
-
   def self.find_top_40
     page_n = 1
     movies_data = []
