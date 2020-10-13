@@ -27,9 +27,8 @@
           <div class='guests'>
             <h3>Guests:</h3>
             <% party.guests.each do |guest| %>
-              <% user = User.find(guest.user_id) %>
               <ul>
-                <li><%= user.email %>: <%= guest.status %></li>
+                <li><%= guest.user.email %>: <%= guest.status %></li>
               </ul>
             <% end %>
           </div>
@@ -43,11 +42,9 @@
   <h2>Your Party Invites</h2>
       <% @my_invites.each do |guest| %>
       <div class="parties"
-        <% party = Party.find(guest.party_id) %>
-        <% user = User.find(party.user_id) %>
-        <h2><%= party.title %></h2>
-        <h3>Host: <%= user.email %></h3>
-        <h3>When: <%= party.datetime_of_party %></h3>
+        <h2><%= guest.party.title %></h2>
+        <h3>Host: <%= guest.party.user.email %></h3>
+        <h3>When: <%= guest.party.datetime_of_party %></h3>
         <h3>Your Status: <%= guest.status %></h3><br>
         <% if guest.status == 'Undecided' %>
           <%= button_to "I'm in!", parties_accept_path, params: { invite: :accepted, guest: guest } %>
