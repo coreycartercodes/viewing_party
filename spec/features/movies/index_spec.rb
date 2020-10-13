@@ -15,7 +15,7 @@ RSpec.describe 'discover', type: :feature do
 
       it 'has button to discover top 40 movies' do
         VCR.use_cassette('top_40_movies') do
-          @movies = MovieService.find_top_40
+          @movies = MovieFacade.top_40
           visit '/discover'
           expect(page).to have_button('Top 40 Movies')
 
@@ -30,7 +30,7 @@ RSpec.describe 'discover', type: :feature do
 
       it 'has form to search by movie title' do
         VCR.use_cassette('happy_movie_search') do
-          @movies = MovieService.find_title('Hello')
+          @movies = MovieFacade.find('Hello')
 
           visit '/discover'
 
