@@ -33,15 +33,10 @@ RSpec.describe 'new viewing party', type: :feature do
         expect(page).to have_content(@friend2.email)
         expect(page).to have_content(@friend3.email)
 
-        find('#party_datetime_of_party').fill_in with: DateTime.current
+        fill_in 'party_datetime_of_party', with: DateTime.current
 
-        within ("#party_invited_ids_#{@friend1.id}") do
-          check
-        end
-
-        within ("#party_invited_ids_#{@friend2.id}") do
-          check
-        end
+        page.check("party_invited_ids_#{@friend1.id}")
+        page.check("party_invited_ids_#{@friend2.id}")
 
         click_on 'Create Viewing Party'
 
