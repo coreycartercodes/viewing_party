@@ -12,7 +12,7 @@ class UsersController < ApplicationController
       session[:current_user] = @user.id
       redirect_to '/dashboard'
     else
-      flash[:error] = @user.errors.full_messages.to_sentence
+      flash[:danger] = @user.errors.full_messages.to_sentence
       @user.email = '' if @user.errors.details.keys.include?(:email)
       render :new
     end

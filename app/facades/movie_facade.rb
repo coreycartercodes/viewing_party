@@ -22,4 +22,8 @@ class MovieFacade
     json = MovieService.find_title(title)
     @movies = json.map { |movie_data| Movie.new(movie_data) }
   end
+
+  def self.get_trailer(movie_id)
+    MovieService.get_trailer(movie_id)
+  end
 end

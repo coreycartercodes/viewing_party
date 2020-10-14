@@ -56,4 +56,11 @@ class MovieService
     )
     JSON.parse(connection.body, symbolize_names: true)[:cast].take(10)
   end
+
+  def self.get_trailer(movie_id)
+    connection = conn.get(
+      "/3/movie/#{movie_id}/videos?api_key=#{ENV['MOVIE_API_KEY']}"
+    )
+    JSON.parse(connection.body, symbolize_names: true)[:results].last[:key]
+  end
 end

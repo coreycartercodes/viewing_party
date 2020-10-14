@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:current_user] = @user.id
       redirect_to '/dashboard'
     else
-      flash[:error] = 'That email/password combination does not exist in our records'
+      flash[:danger] = 'That email/password combination does not exist in our records'
       redirect_to '/'
     end
   end

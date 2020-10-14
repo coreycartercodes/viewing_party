@@ -36,6 +36,7 @@ ActiveRecord::Schema.define(version: 2020_10_13_004259) do
     t.integer "api_id"
     t.string "runtime"
     t.datetime "datetime_of_party"
+    t.string "trailer_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

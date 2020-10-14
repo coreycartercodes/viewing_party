@@ -5,6 +5,7 @@ class CreateParties < ActiveRecord::Migration[5.2]
       t.integer :api_id
       t.string :runtime
       t.datetime :datetime_of_party
+      t.string :trailer_id
       t.references :user, foreign_key: true
 
       t.timestamps
