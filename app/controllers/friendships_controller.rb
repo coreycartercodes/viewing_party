@@ -10,11 +10,11 @@ class FriendshipsController < ApplicationController
 
   def check_friend(user, new_friend)
     if user.friends.include?(new_friend)
-      flash[:fail] = "You've already added #{new_friend.email} as a friend!"
+      flash[:danger] = "You've already added #{new_friend.email} as a friend!"
     elsif user == new_friend
-      flash[:fail] = "Friend can't be yourself!"
+      flash[:danger] = "Friend can't be yourself!"
     elsif new_friend.nil?
-      flash[:fail] = "Can't find user with that email!"
+      flash[:danger] = "Can't find user with that email!"
     else
       user.add_friend(new_friend)
     end

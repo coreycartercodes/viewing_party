@@ -57,7 +57,7 @@ RSpec.describe 'new viewing party', type: :feature do
         expect(page).to have_content("Undecided")
 
         # User sees their invited to parties
-        click_button 'Logout'
+        click_link 'Logout'
         visit '/'
         fill_in 'Email', with: @friend1.email
         fill_in 'Password', with: @friend1.password
@@ -74,7 +74,9 @@ RSpec.describe 'new viewing party', type: :feature do
 
         click_button 'Hard Pass'
 
-        expect(@friend1.status).to eq('Hard Pass')
+        guest = Guest.find_by(user_id: @friend1.id)
+
+        expect(guest.status).to eq('Hard Pass')
         expect(current_path).to eq('/dashboard')
 
         expect(page).to have_content("Your Status: Hard Pass")
@@ -83,7 +85,9 @@ RSpec.describe 'new viewing party', type: :feature do
 
         click_button "I'm in!"
 
-        expect(@friend1.status).to eq("I'm in!")
+        guest.reload
+
+        expect(guest.status).to eq("I'm in!")
         expect(current_path).to eq('/dashboard')
         expect(page).to have_content("Your Status: I'm in!")
 
@@ -91,7 +95,7 @@ RSpec.describe 'new viewing party', type: :feature do
         expect(page).to have_button('Hard Pass')
 
         #User sees guest statuses
-        click_button 'Logout'
+        click_link 'Logout'
         visit '/'
         fill_in 'Email', with: @user.email
         fill_in 'Password', with: @user.password

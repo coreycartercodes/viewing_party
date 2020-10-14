@@ -1,6 +1,7 @@
 class PartiesController < ApplicationController
   def new
     @movie = MovieFacade.movie_details_for_party(session[:movie_id])
+    @trailer = MovieService.get_trailer(session[:movie_id])
     @user = User.find(current_user)
   end
 
@@ -12,7 +13,7 @@ class PartiesController < ApplicationController
       end
       redirect_to '/dashboard'
     else
-      flash[:error] = @party.errors.full_messages.to_sentence
+      flash[:danger] = @party.errors.full_messages.to_sentence
       redirect_to '/parties/new'
     end
   end
@@ -32,6 +33,6 @@ class PartiesController < ApplicationController
   private
 
   def party_params
-    params.require(:party).permit(:title, :api_id, :runtime, :datetime_of_party, :user_id)
+    params.require(:party).permit(:title, :api_id, :runtime, :datetime_of_party, :user_id, :trailer_id)
   end
 end

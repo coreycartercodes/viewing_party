@@ -19,7 +19,8 @@ gem 'bcrypt'
 gem 'faraday'
 gem 'figaro'
 gem 'json'
-
+gem 'bootstrap'
+gem 'jquery-rails'
 
 
 group :development, :test do

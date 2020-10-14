@@ -3,9 +3,11 @@
 
 <div id="friends">
 <h2>Friend's List</h2>
-  <% @user.friends.each do |friend| %>
-    <p><%= friend.email %></p>
-  <% end %>
+  <ul class='list-group'>
+    <% @user.friends.each do |friend| %>
+      <li class='list-group-item list-group-item-action'><%= friend.email %></li>
+    <% end %>
+  </ul><br>
 <%= form_for :friend, :as => :user do |f| %>
   <%= f.label :email %>
   <%= f.text_field :email %><br />
@@ -15,17 +17,26 @@
 <br>
 <br>
 <br>
-<br>
-<%= button_to 'Discover Movies', '/discover', method: :get %>
+<%= button_to 'Discover Movies', '/discover', method: :get %><br>
 </center>
 <% if @user.parties != [] %>
   <h2>Your Parties</h2>
+    <div class='row'>
         <% @user.parties.each do |party| %>
-        <div class='parties'>
-          <h3><%= party.title %></h3>
-          <h3>When: <%= party.datetime_of_party %></h3>
+        <div class='col-md-4'>
+        <div class='card mb-4 shadow-sm'>
+          <div class="bd-placeholder-img card-img-top">
+            <iframe
+              src="https://www.youtube.com/embed/<%= party.trailer_id %>"
+              allowfullscreen="allowfullscreen">
+            </iframe>
+          </div>
+          <div class='card-body'>
+            <h4><%= party.title %></h4>
+            <h4>When: <%= party.datetime_of_party %></h4>
+          </div>
           <div class='guests'>
-            <h3>Guests:</h3>
+            <h4 style='padding-left:15px'>Guests:</h4>
             <% party.guests.each do |guest| %>
               <ul>
                 <li><%= guest.user.email %>: <%= guest.status %></li>
@@ -33,29 +44,45 @@
             <% end %>
           </div>
           </div>
+          </div>
         <% end %>
+      </div>
       <% else %>
         <h2>You have no hosted parties, start one!</h2>
       <% end %>
 
 <% if @my_invites != [] %>
   <h2>Your Party Invites</h2>
+    <div1 class="row"
       <% @my_invites.each do |guest| %>
-      <div class="parties"
-        <h2><%= guest.party.title %></h2>
-        <h3>Host: <%= guest.party.user.email %></h3>
-        <h3>When: <%= guest.party.datetime_of_party %></h3>
-        <h3>Your Status: <%= guest.status %></h3><br>
-        <% if guest.status == 'Undecided' %>
-          <%= button_to "I'm in!", parties_accept_path, params: { invite: :accepted, guest: guest } %>
-          <%= button_to "Hard Pass", parties_decline_path, params: { invite: :declined, guest: guest } %>
-        <% elsif guest.status == "I'm in!" %>
-          <%= button_to "Hard Pass", parties_decline_path, params: { invite: :declined, guest: guest } %>
-        <% elsif guest.status == "Hard Pass" %>
-          <%= button_to "I'm in!", parties_accept_path, params: { invite: :accepted, guest: guest } %>
-        <% end %>
-      </div>
+        <div class='col-md-4'>
+          <div3 class='card mb-4 shadow-sm'>
+          <div class="bd-placeholder-img card-img-top">
+            <iframe
+              src="https://www.youtube.com/embed/<%= guest.party.trailer_id %>"
+              allowfullscreen="allowfullscreen">
+            </iframe>
+          </div>
+            <div4 class='card-body'>
+              <h4><%= guest.party.title %></h4>
+              <h4>Host: <%= guest.party.user.email %></h4>
+              <h4>When: <%= guest.party.datetime_of_party %></h4>
+              <h4>Your Status: <%= guest.status %></h4><br>
+              <div5 class="d-flex justify-content-between align-items-center">
+                <% if guest.status == 'Undecided' %>
+                  <%= button_to "I'm in!", parties_accept_path, params: { invite: :accepted, guest: guest } %>
+                  <%= button_to "Hard Pass", parties_decline_path, params: { invite: :declined, guest: guest } %>
+                <% elsif guest.status == "I'm in!" %>
+                  <%= button_to "Hard Pass", parties_decline_path, params: { invite: :declined, guest: guest } %>
+                <% elsif guest.status == "Hard Pass" %>
+                  <%= button_to "I'm in!", parties_accept_path, params: { invite: :accepted, guest: guest } %>
+                <% end %>
+              </div5>
+            </div4>
+          </div3>
+        </div>
       <% end %>
+    </div1>
   <% else %>
-    <h2>You have no party invites :(</h2>
+    <h2>You have no party invites :(</h2><br>
   <% end %>
