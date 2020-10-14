@@ -11,6 +11,7 @@ class PartiesController < ApplicationController
       params['party']['invited_ids'][1..-1].each do |id|
         Guest.create(party_id: @party.id, user_id: id, status: 'Undecided')
       end
+      UserMailer.invite_email(@party, params['party']['invited_ids']).deliver_now
       redirect_to '/dashboard'
     else
       flash[:danger] = @party.errors.full_messages.to_sentence
