@@ -1,4 +1,5 @@
 ![image](https://travis-ci.org/lkriffell/viewing_party.svg?branch=main)
+
 # Viewing Party
 
   - This is the base repo for the [viewing party project](https://backend.turing.io/module3/projects/viewing_party) used for Turing's Backend Module 3.
@@ -10,7 +11,7 @@ This application is used to search for movies by title, or discover new movies b
 are also users of the application.
 
 ### Deployment
-  - App is hosted on [Heroku](https://limitless-castle-72832.herokuapp.com/)
+  - App is hosted on [Heroku](https://viewing-party-lr-cc.herokuapp.com/)
 
 ### Authors
   - **Logan Riffell** - [GitHub](https://github.com/coreycartercodes)
