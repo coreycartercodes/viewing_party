@@ -5,10 +5,13 @@ class UserMailer < ApplicationMailer
     @datetime = party_info.datetime_of_party
     @host = party_info.user
     @attendees = invitee_ids.map do |id|
-      if id!=""
-        User.find(id).email
-      end
-    end.reject { |e| e.to_s.empty? }
+      User.find(id).email if id != ''
+    end
+    @attendees.reject { |e| e.to_s.empty? }
+    mail_message
+  end
+  private_methods
+  def mail_message
     mail(
       reply_to: @host.email,
       to: @attendees,
