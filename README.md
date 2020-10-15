@@ -11,7 +11,7 @@ This application is used to search for movies by title, or discover new movies b
 are also users of the application.
 
 ### Deployment
-  - App is hosted on [Heroku](https://limitless-castle-72832.herokuapp.com/)
+  - App is hosted on [Heroku](https://viewing-party-lr-cc.herokuapp.com/)
 
 ### Authors
   - **Logan Riffell** - [GitHub](https://github.com/coreycartercodes)
