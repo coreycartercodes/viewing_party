@@ -24,14 +24,14 @@
     <div class='row'>
         <% @user.parties.each do |party| %>
         <div class='col-md-4'>
-        <div class='card mb-4 shadow-sm'>
-          <div class="bd-placeholder-img card-img-top">
-            <iframe
-              src="https://www.youtube.com/embed/<%= party.trailer_id %>"
-              allowfullscreen="allowfullscreen">
-            </iframe>
-          </div>
-          <div class='card-body'>
+          <div class='card mb-4 shadow-sm'>
+            <div class="bd-placeholder-img card-img-top">
+              <iframe
+                src="https://www.youtube.com/embed/<%= party.trailer_id %>"
+                allowfullscreen="allowfullscreen">
+              </iframe>
+            </div>
+            <div class='card-body'>
             <h4><%= party.title %></h4>
             <h4>When: <%= party.datetime_of_party %></h4>
           </div>
@@ -44,7 +44,7 @@
             <% end %>
           </div>
           </div>
-          </div>
+        </div>
         <% end %>
       </div>
       <% else %>
@@ -53,16 +53,16 @@
 
 <% if @my_invites != [] %>
   <h2>Your Party Invites</h2>
-    <div1 class="row"
+    <div1 class="row">
       <% @my_invites.each do |guest| %>
         <div class='col-md-4'>
           <div3 class='card mb-4 shadow-sm'>
-          <div class="bd-placeholder-img card-img-top">
-            <iframe
-              src="https://www.youtube.com/embed/<%= guest.party.trailer_id %>"
-              allowfullscreen="allowfullscreen">
-            </iframe>
-          </div>
+            <div class="bd-placeholder-img card-img-top">
+              <iframe
+                src="https://www.youtube.com/embed/<%= guest.party.trailer_id %>"
+                allowfullscreen="allowfullscreen">
+              </iframe>
+            </div>
             <div4 class='card-body'>
               <h4><%= guest.party.title %></h4>
               <h4>Host: <%= guest.party.user.email %></h4>
